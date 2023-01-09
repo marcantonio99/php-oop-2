@@ -5,13 +5,9 @@ class Category{
     public $name;
     public $icon;
 
-    public function __construct(
-        String $name,
-        String $icon
-    )
-    {
-        $this->name = $name;
-        $this->icon = $icon;
+    public function __construct($icon,$name){
+        $this->icon=$icon;
+        $this->name=$name;
     }
 }
 
