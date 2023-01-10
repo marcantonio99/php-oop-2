@@ -37,18 +37,35 @@ $arrayelements=[
 </head>
 <body>
 
-<h1>Pet Shop</h1>
+<section class="container">
+        <h3>Boolshop</h3>
+        <h4>Prod</h4>
+        <div class="d-flex flex-wrap">
+            <?php foreach ($arrayelements as $element) { ?>
+                <div class="card bg-dark text-white mt-2" style="width: calc(100% / 2);">
+                <img src="<?php echo $element -> img ?>" class="card-img-top mt-5" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo "<br>" . $element -> nome ?></h5>
+                  <span><?php echo $element->category->name . " " . $element->category->icon ?></span>
+                  <p class="card-text"><?php echo "<strong>Price:</strong> " . $element -> prezzo ?></p>
 
-<div class="container">
-<div class="row">
-    <?php foreach( $products as $elem ){ ?>
+                  <?php if(get_class($element) == "food") { 
+                     echo "<p>". "<strong>Peso netto:</strong> " . $element -> weight . "</p>";
+                     echo "<p>". "<strong>ingredienti:</strong> " . $element -> ingredients . "</p>";
 
-    <div class="col-4">
-
-    </div>
-    <?php } ?>
-</div>
-</div>
+                   } else if (get_class($element) == "accessories"){
+                    echo "<p>" . "<strong>Materiale:</strong> " . $element -> material . "</p>";
+                    echo "<p>" . "<strong>Dimensioni:</strong> " . $element -> dimentions . "</p>";
+                  }else if (get_class($element) == "toys"){
+                    echo "<p>" . "<strong>caratteristiche:</strong> " . $element -> caratteristics . "</p>";
+                    echo "<p>" . "<strong>dimensioni:</strong> " .$element -> dimentions . "</p>";
+                  }?>
+                  
+                </div>
+              </div>
+           <?php } ?>
+        </div>
+    </section>
 
     <!--include Vue-->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
